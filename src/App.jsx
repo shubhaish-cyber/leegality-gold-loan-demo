@@ -48,13 +48,24 @@ const COMPONENTS = {
   "success-celebrate": SucCelebrate,
 };
 
-// Top chrome: Ribbon + Header + ProgressBar + DotTimeline.
-// Rendered ABOVE every sub-screen whose `chrome: true` in SUB_SCREENS.
-function TopChrome({ subIdx, active }) {
+// Sticks to the very bottom of the viewport on every screen: white bg,
+// light-grey text — subtle brand footer reminder that this is an illustration.
+function BottomRibbon() {
   const t = useLang();
   return (
+    <Ribbon
+      text={t.homeRibbon}
+      bg={C.white}
+      color={C.gray}
+    />
+  );
+}
+
+// Top chrome: Header + DotTimeline.
+// Rendered ABOVE every sub-screen whose `chrome: true` in SUB_SCREENS.
+function TopChrome({ subIdx, active }) {
+  return (
     <>
-      <Ribbon text={t.homeRibbon} />
       <Header
         right={
           <span style={{ fontSize: 11, color: C.gray }}>
@@ -141,6 +152,7 @@ export default function App() {
             <ProgressBar currentIdx={subIdx} total={SUB_SCREENS.length} />
           )}
           {active.chrome && <NavBar onBack={back} onReset={reset} />}
+          <BottomRibbon />
         </div>
       </FormCtx.Provider>
     </LangCtx.Provider>
