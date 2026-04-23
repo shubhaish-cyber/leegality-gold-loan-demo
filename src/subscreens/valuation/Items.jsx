@@ -6,7 +6,7 @@ import Card from "../../components/shared/Card";
 import { StaggerContainer, StaggerItem } from "../../components/animations/FadeInUp";
 import { useLang } from "../../context/LangContext";
 import { useFormData } from "../../context/FormContext";
-import { useLeegalityValuation } from "../../hooks/useLeegality";
+import { useLeegalityValuation, assertLeegalitySignUrl } from "../../hooks/useLeegality";
 
 export default function Items({ onNext }) {
   const t = useLang();
@@ -43,8 +43,7 @@ export default function Items({ onNext }) {
     // we do NOT await, so the agent can keep moving while the customer signs.
     startValuationSign({ name, email, mobile })
       .then((res) => {
-        const firstSignUrl = res.invitations?.[0]?.signUrl;
-        if (!firstSignUrl) throw new Error("No signUrl returned for Invitee 1");
+        const firstSignUrl = assertLeegalitySignUrl(res.invitations?.[0]?.signUrl);
         try { popup.location.href = firstSignUrl; } catch { /* ignore */ }
       })
       .catch((e) => {

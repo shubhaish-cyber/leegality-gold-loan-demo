@@ -19,9 +19,7 @@ export default function GuideInterstitial({
   nextLabel,
 }) {
   const isHandoff = variant === "handoff";
-  const defaultCta = isHandoff
-    ? "Customer, tap here to continue"
-    : "Got it — show the screen";
+  const defaultCta = isHandoff ? "I'm ready to sign" : "Continue";
 
   return (
     <div
@@ -48,7 +46,7 @@ export default function GuideInterstitial({
         >
           {isHandoff ? (
             <>
-              <div style={{ fontSize: 48, marginBottom: 12, lineHeight: 1 }}>🤝</div>
+              <div style={{ fontSize: 48, marginBottom: 12, lineHeight: 1 }}>✍️</div>
               <div
                 style={{
                   fontSize: 19,
@@ -58,7 +56,7 @@ export default function GuideInterstitial({
                   lineHeight: 1.3,
                 }}
               >
-                Hand the device to the customer
+                Time to sign your loan documents
               </div>
             </>
           ) : (
@@ -72,7 +70,7 @@ export default function GuideInterstitial({
                 textTransform: "uppercase",
               }}
             >
-              Demo Guide
+              What's next
             </div>
           )}
 

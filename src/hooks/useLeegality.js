@@ -1,5 +1,8 @@
 import { useCallback } from "react";
 import { useLangCode } from "../context/LangContext";
+
+// Only log verbose details in dev. In prod builds this is tree-shaken out.
+const DEV = import.meta.env.DEV;
 import { getValuationWorkflow } from "../constants/leegalityWorkflows";
 import { getKfsWorkflow } from "../constants/leegalityKfsWorkflows";
 import { getLaWorkflow } from "../constants/leegalityLaWorkflows";
@@ -16,6 +19,36 @@ function normalizePhone(raw) {
   if (digits.length === 12 && digits.startsWith("91")) digits = digits.slice(2);
   if (digits.length === 11 && digits.startsWith("0")) digits = digits.slice(1);
   return digits;
+}
+
+/**
+ * Defensively verifies that a signUrl returned by the API is an https URL on
+ * a trusted Leegality domain before we navigate a popup to it. Prevents a
+ * compromised / malformed upstream response from turning a click into an
+ * open-redirect or javascript:/data:-URL navigation.
+ *
+ * Returns the URL string if safe, otherwise throws.
+ */
+export function assertLeegalitySignUrl(url) {
+  if (!url || typeof url !== "string") throw new Error("signUrl missing");
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    throw new Error("signUrl is not a valid URL");
+  }
+  if (parsed.protocol !== "https:") {
+    throw new Error(`signUrl must use https (got ${parsed.protocol})`);
+  }
+  const ALLOWED_HOSTS = new Set([
+    "sandbox.leegality.com",
+    "app1.leegality.com",
+    "dashboard.leegality.com",
+  ]);
+  if (!ALLOWED_HOSTS.has(parsed.hostname)) {
+    throw new Error(`signUrl host "${parsed.hostname}" is not allow-listed`);
+  }
+  return url;
 }
 
 /** Short IRN for this demo: GL-VAL-<timestamp>-<short-random> */
@@ -61,7 +94,9 @@ export function useLeegalityValuation() {
       irn: makeIrn(),
     };
 
-    console.log(`[Leegality] POST /v3.0/sign/request (lang=${lang}, profileId=${profileId})`, payload);
+    if (DEV) {
+      console.log(`[Leegality] Valuation POST (lang=${lang}, profileId=${profileId})`);
+    }
 
     let res;
     try {
@@ -76,7 +111,9 @@ export function useLeegalityValuation() {
 
     // Leegality always returns HTTP 200; real status is in the body.
     const json = await res.json().catch(() => ({}));
-    console.log("[Leegality] sign/request response:", json);
+    if (DEV) {
+      console.log(`[Leegality] Valuation response (status=${json?.status}, docId=${json?.data?.documentId || "-"})`);
+    }
 
     if (json.status !== 1 || !json.data) {
       const msg =
@@ -163,7 +200,9 @@ export function useLeegalityKFS() {
       irn: makeKfsIrn(),
     };
 
-    console.log(`[Leegality] KFS POST /v3.0/sign/request (lang=${lang}, profileId=${profileId}, filled ${filledCount}/${populatedFields.length} fields)`);
+    if (DEV) {
+      console.log(`[Leegality] KFS POST (lang=${lang}, profileId=${profileId}, filled ${filledCount}/${populatedFields.length} fields)`);
+    }
 
     let res;
     try {
@@ -177,7 +216,9 @@ export function useLeegalityKFS() {
     }
 
     const json = await res.json().catch(() => ({}));
-    console.log("[Leegality] KFS sign/request response:", json);
+    if (DEV) {
+      console.log(`[Leegality] KFS response (status=${json?.status}, docId=${json?.data?.documentId || "-"})`);
+    }
 
     if (json.status !== 1 || !json.data) {
       const msg =
@@ -245,7 +286,9 @@ export function useLeegalityAgreement() {
       irn: makeLaIrn(),
     };
 
-    console.log(`[Leegality] LA POST /v3.0/sign/request (lang=${lang}, profileId=${profileId}, filled ${filledCount}/${populatedFields.length} fields)`);
+    if (DEV) {
+      console.log(`[Leegality] LA POST (lang=${lang}, profileId=${profileId}, filled ${filledCount}/${populatedFields.length} fields)`);
+    }
 
     let res;
     try {
@@ -259,7 +302,9 @@ export function useLeegalityAgreement() {
     }
 
     const json = await res.json().catch(() => ({}));
-    console.log("[Leegality] LA sign/request response:", json);
+    if (DEV) {
+      console.log(`[Leegality] LA response (status=${json?.status}, docId=${json?.data?.documentId || "-"})`);
+    }
 
     if (json.status !== 1 || !json.data) {
       const msg =

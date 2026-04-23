@@ -1,27 +1,35 @@
+// Copy shown on demo-guide interstitial cards between phases.
+// Written in the app's voice — speaking directly to the customer.
 const GUIDE = {
   language: {
     type: "strip",
-    action: "Tap any language to show the live switch, then select your preferred language and tap Continue.",
+    action:
+      "Pick the language you're most comfortable with. You can change it anytime.",
   },
   application: {
     type: "entry",
-    action: "Show the pre-filled customer details and loan terms, then tap Proceed to Gold Valuation.",
+    action:
+      "We'll quickly confirm your name, email and mobile number. These will appear on your loan documents.",
   },
   valuation: {
     type: "strip",
-    action: "Walk through the 4 gold items and the Loan Summary at the bottom, then tap Proceed to Document Signing.",
+    action:
+      "Your gold has been weighed and tested. Here's what it's worth — and how much you can borrow against it.",
   },
   sanction: {
     type: "handoff",
-    action: "Hand the device to the customer. Ask them to review the KFS terms and tap Sign.",
+    action:
+      "Please review your Key Fact Statement — the three numbers that matter for your loan — and eSign to confirm you've read the terms.",
   },
   agreement: {
     type: "strip",
-    action: "Point out both signed status badges at the top, then tap Sign Loan Agreement.",
+    action:
+      "One last signature. We'll open your Loan Agreement so you can eSign and complete your gold loan.",
   },
   success: {
     type: "strip",
-    action: "Show the signed documents checklist and loan account number. Tap Start New Application to reset.",
+    action:
+      "Your loan is approved. You'll receive the signed documents on email, SMS and WhatsApp shortly.",
   },
 };
 

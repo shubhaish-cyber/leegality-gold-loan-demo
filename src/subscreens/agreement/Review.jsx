@@ -4,7 +4,7 @@ import Card from "../../components/shared/Card";
 import Row from "../../components/shared/Row";
 import { useLang } from "../../context/LangContext";
 import { useFormData } from "../../context/FormContext";
-import { useLeegalityAgreement } from "../../hooks/useLeegality";
+import { useLeegalityAgreement, assertLeegalitySignUrl } from "../../hooks/useLeegality";
 
 export default function Review({ onNext }) {
   const t = useLang();
@@ -37,8 +37,7 @@ export default function Review({ onNext }) {
     // Fire-and-forget: kick off Leegality, navigate popup when ready.
     startLaSign({ name, email, mobile })
       .then((res) => {
-        const firstSignUrl = res.invitations?.[0]?.signUrl;
-        if (!firstSignUrl) throw new Error("No signUrl returned for Invitee 1");
+        const firstSignUrl = assertLeegalitySignUrl(res.invitations?.[0]?.signUrl);
         try { popup.location.href = firstSignUrl; } catch { /* ignore */ }
       })
       .catch((e) => {

@@ -4,7 +4,7 @@ import Card from "../../components/shared/Card";
 import Row from "../../components/shared/Row";
 import { useLang } from "../../context/LangContext";
 import { useFormData } from "../../context/FormContext";
-import { useLeegalityKFS } from "../../hooks/useLeegality";
+import { useLeegalityKFS, assertLeegalitySignUrl } from "../../hooks/useLeegality";
 
 export default function Terms({ onNext }) {
   const t = useLang();
@@ -37,8 +37,7 @@ export default function Terms({ onNext }) {
     // Fire-and-forget: kick off Leegality, navigate popup when ready.
     startKfsSign({ name, email, mobile })
       .then((res) => {
-        const signUrl = res.invitations?.[0]?.signUrl;
-        if (!signUrl) throw new Error("No signUrl returned for KFS signer");
+        const signUrl = assertLeegalitySignUrl(res.invitations?.[0]?.signUrl);
         try { popup.location.href = signUrl; } catch { /* ignore */ }
       })
       .catch((e) => {

@@ -27,6 +27,8 @@ export const PHASE_LABELS = {
 
 // banner: "agent" | "customer" | null
 // chrome: whether to render ribbon/header/progress/dot-timeline/nav around the sub-screen
+// guide: demo-guide interstitial — only bottom progress bar + nav are shown;
+//        ribbon / header / dot-timeline are hidden so the instruction card has the full screen.
 export const SUB_SCREENS = [
   { key: "home-welcome", phase: "home", banner: null, chrome: false },
   { key: "home-flow", phase: "home", banner: null, chrome: false },
@@ -34,18 +36,18 @@ export const SUB_SCREENS = [
 
   { key: "language", phase: "language", banner: null, chrome: true },
 
-  { key: "application-guide", phase: "application", banner: null, chrome: true },
+  { key: "application-guide", phase: "application", banner: null, chrome: true, guide: true },
   { key: "application-name", phase: "application", banner: "agent", chrome: true },
   { key: "application-email", phase: "application", banner: "agent", chrome: true },
   { key: "application-mobile", phase: "application", banner: "agent", chrome: true },
 
-  { key: "valuation-guide", phase: "valuation", banner: null, chrome: true },
+  { key: "valuation-guide", phase: "valuation", banner: null, chrome: true, guide: true },
   { key: "valuation-items", phase: "valuation", banner: "customer", chrome: true },
 
-  { key: "sanction-handoff", phase: "sanction", banner: null, chrome: true },
+  { key: "sanction-handoff", phase: "sanction", banner: null, chrome: true, guide: true },
   { key: "sanction-terms", phase: "sanction", banner: "customer", chrome: true },
 
-  { key: "agreement-guide", phase: "agreement", banner: null, chrome: true },
+  { key: "agreement-guide", phase: "agreement", banner: null, chrome: true, guide: true },
   { key: "agreement-review", phase: "agreement", banner: "customer", chrome: true },
 
   { key: "success-celebrate", phase: "success", banner: null, chrome: true },

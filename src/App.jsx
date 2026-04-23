@@ -62,7 +62,6 @@ function TopChrome({ subIdx, active }) {
           </span>
         }
       />
-      <ProgressBar currentIdx={subIdx} total={SUB_SCREENS.length} />
       <DotTimeline currentPhase={active.phase} />
     </>
   );
@@ -130,12 +129,17 @@ export default function App() {
             flexDirection: "column",
           }}
         >
-          {active.chrome && <TopChrome subIdx={subIdx} active={active} />}
+          {active.chrome && !active.guide && (
+            <TopChrome subIdx={subIdx} active={active} />
+          )}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", minHeight: 0 }}>
             <ScreenTransition screenKey={active.key} direction={direction}>
               <Active onNext={next} onBack={back} onReset={reset} />
             </ScreenTransition>
           </div>
+          {active.chrome && (
+            <ProgressBar currentIdx={subIdx} total={SUB_SCREENS.length} />
+          )}
           {active.chrome && <NavBar onBack={back} onReset={reset} />}
         </div>
       </FormCtx.Provider>
