@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "/Users/shubhaish/Downloads/swarna-gold-loan-demo"],
+      "port": 5173
+    }
+  ]
+}
