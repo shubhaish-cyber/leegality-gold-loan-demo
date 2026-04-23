@@ -69,29 +69,55 @@ pattern-matching on field names (see `src/constants/leegalityFieldValues.js`).
 All template fields are marked `required: false`, so unmatched fields
 are safely sent empty.
 
-## ⚠️ Deployment caveats
+## Deploying
 
-**The Vite proxy is dev-only.** A production `vite build` produces static
-files and has no server-side proxy — the `/api/leegality/*` paths will
-404 on any static host (Netlify, Cloudflare Pages, GH Pages, etc.).
+### Architecture
 
-Before deploying to production you must add a real backend for the
-Leegality proxy. Options:
+- `npm run dev` → Vite dev server (with built-in proxy for local work only)
+- `npm run build` → produces static SPA in `./dist`
+- `npm start` → `node server.js` — Express server that both serves `./dist`
+  and proxies `/api/leegality/*` to Leegality with the token injected
+  server-side. **This is the only production-safe way to run the app.**
 
-- **Vercel / Netlify Function / Cloudflare Worker**: port the proxy
-  logic from `vite.config.js` into a server function at `/api/leegality/*`.
-- **Express / Fastify server**: run a small Node service that does the
-  same header injection + forwarding.
-- **Nginx / reverse proxy**: fine too, as long as the token is injected
-  from the server-side env, never the client.
+### Deploying to Replit
 
-Other deployment notes:
+1. Import this GitHub repo into Replit.
+2. Open the **Secrets** tab (padlock icon in the left sidebar) and add:
+   - `LEEGALITY_AUTH_TOKEN` — your sandbox token (required)
+   - `LEEGALITY_PRIVATE_SALT` — only if you wire up webhooks (optional)
+   - `LEEGALITY_BASE_URL` — set to `https://app1.leegality.com` for prod,
+     leave unset to use sandbox
+3. Click **Run**. The `.replit` config does `npm install && npm run build
+   && npm start` automatically.
+4. For a sticky custom domain use Replit's **Deployments** — it's already
+   wired up in `.replit` under `[deployment]`.
 
-- Set `LEEGALITY_BASE_URL=https://app1.leegality.com` in production
-  (currently defaults to sandbox).
-- Never ship a `.env` to a public repo. `.gitignore` already blocks this.
-- The browser console logs are gated on `import.meta.env.DEV`, so they
-  are tree-shaken out of production builds.
+### Deploying elsewhere
+
+`server.js` is a standard Express app; anything that runs Node 20+ works:
+
+- **Render / Railway / Fly.io / Cloud Run** — set the env vars in the
+  platform's dashboard, build command `npm install && npm run build`,
+  start command `npm start`.
+- **Vercel / Netlify** — replace `server.js` with an equivalent
+  Serverless/Edge function that injects `X-Auth-Token`; keep the SPA
+  build as the static output. Do **not** expose the token in `VITE_*`.
+- **Nginx / any reverse proxy** — fine too, as long as the token is
+  injected from the server-side env, never the client.
+
+### Security checklist before going to prod
+
+- ✅ `.env` is gitignored and never committed
+- ✅ `LEEGALITY_AUTH_TOKEN` lives only in the host's secrets manager
+- ✅ Client bundle has no secret: scan with
+  `grep -r fzr6q7y7 dist/` — should return nothing
+- ✅ `assertLeegalitySignUrl` restricts popup navigation to
+  `*.leegality.com` over https
+- ✅ Dev-only `console.log` statements are tree-shaken out of production
+  builds via `import.meta.env.DEV`
+- ⬜ Swap `LEEGALITY_BASE_URL` from sandbox → `app1.leegality.com` for
+  live traffic
+- ⬜ Rotate the sandbox token before you share the public link
 
 ## File layout
 

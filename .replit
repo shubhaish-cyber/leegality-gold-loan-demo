@@ -1,0 +1,41 @@
+# Replit configuration for the Swarna Bank gold-loan demo.
+#
+# SECRETS: DO NOT put the Leegality token in this file or anywhere in the
+# repo. Go to the Replit "Secrets" tab (padlock icon in the left sidebar)
+# and add:
+#
+#   LEEGALITY_AUTH_TOKEN   — your sandbox token (required)
+#   LEEGALITY_PRIVATE_SALT — if you add webhooks later (optional)
+#   LEEGALITY_BASE_URL     — override default https://sandbox.leegality.com
+#                             (set to https://app1.leegality.com for prod)
+#
+# Replit injects those as env vars into `npm start`.
+
+entrypoint = "server.js"
+hidden = [".config", "dist", "node_modules", ".vite"]
+
+# What the "Run" button does: build the SPA, then boot the Express server.
+run = "npm install && npm run build && npm start"
+
+[nix]
+channel = "stable-24_05"
+
+[env]
+NODE_ENV = "production"
+
+[packager]
+language = "nodejs"
+  [packager.features]
+  packageSearch = true
+  guessImports = false
+  enabledForHosting = true
+
+# Expose the server port that Replit picks via $PORT.
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[deployment]
+run = ["sh", "-c", "npm run build && npm start"]
+build = ["sh", "-c", "npm install"]
+deploymentTarget = "cloudrun"
