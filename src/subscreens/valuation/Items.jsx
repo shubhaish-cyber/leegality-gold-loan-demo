@@ -34,7 +34,7 @@ export default function Items({ onNext }) {
          <body style="font-family:system-ui,sans-serif;padding:60px;text-align:center;color:#555;background:#f8f5ef;">
            <h3 style="margin:0 0 8px;">Preparing your signing session…</h3>
            <p style="margin:0 0 16px;opacity:0.7;">Please don't close this window.</p>
-           <p style="margin:0;max-width:520px;margin-left:auto;margin-right:auto;font-size:14px;line-height:1.55;color:#412402;background:#FAEEDA;border:1px solid #EF9F27;border-radius:10px;padding:12px 16px;">Valuator's Aadhaar eSign with GPS location ON &mdash; customer will get eSign link on WhatsApp</p>
+           <p style="margin:0;max-width:680px;margin-left:auto;margin-right:auto;font-size:20px;font-weight:600;line-height:1.5;color:#412402;background:#FAEEDA;border:2px solid #EF9F27;border-radius:12px;padding:20px 28px;">Valuator's Aadhaar eSign with GPS location ON &mdash; customer will get eSign link on WhatsApp</p>
          </body></html>`
       );
     } catch { /* ignore */ }
