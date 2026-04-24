@@ -1,28 +1,7 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import C from "../../constants/colors";
 import GoldBtn from "../../components/shared/GoldBtn";
-import FadeInUp from "../../components/animations/FadeInUp";
 import { useLang } from "../../context/LangContext";
-
-const STAGGER = 0.14;
-const DELAY_CHILDREN = 0.2;
-
-// Drop-from-top cascade: each step falls into place one after another.
-const dropContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: STAGGER, delayChildren: DELAY_CHILDREN },
-  },
-};
-
-const dropItem = {
-  hidden: { opacity: 0, y: -28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 260, damping: 18, mass: 0.9 },
-  },
-};
 
 const STEPS = [
   { num: 1, label: "Select language" },
@@ -33,11 +12,21 @@ const STEPS = [
   { num: 6, label: "Loan disbursal" },
 ];
 
-// Footer enters at the same moment the last step begins its drop.
-const FOOTER_DELAY = DELAY_CHILDREN + (STEPS.length - 1) * STAGGER;
+// Cycle a highlighted color through the numbered circles one at a time.
+// All text + CTA stay visible on mount; only the highlight moves.
+const HIGHLIGHT_INTERVAL_MS = 700;
 
 export default function Flow({ onNext, onBack }) {
   const t = useLang();
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveIdx((i) => (i + 1) % STEPS.length);
+    }, HIGHLIGHT_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div
       style={{
@@ -56,83 +45,87 @@ export default function Flow({ onNext, onBack }) {
           minHeight: 0,
         }}
       >
-        <FadeInUp>
-          <div
-            style={{
-              fontSize: 13,
-              fontWeight: 700,
-              color: C.goldDark,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 8,
-            }}
-          >
-            How it works
-          </div>
-          <div
-            style={{
-              fontSize: 22,
-              fontWeight: 800,
-              color: "#111",
-              lineHeight: 1.25,
-              marginBottom: 22,
-            }}
-          >
-            {t.homeFlowTitle}
-          </div>
-        </FadeInUp>
-
-        <motion.div
-          variants={dropContainer}
-          initial="hidden"
-          animate="visible"
+        <div
+          style={{
+            fontSize: 13,
+            fontWeight: 700,
+            color: C.goldDark,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            marginBottom: 8,
+          }}
         >
-          {STEPS.map((step, i) => (
-            <motion.div key={i} variants={dropItem}>
+          How it works
+        </div>
+        <div
+          style={{
+            fontSize: 22,
+            fontWeight: 800,
+            color: "#111",
+            lineHeight: 1.25,
+            marginBottom: 22,
+          }}
+        >
+          {t.homeFlowTitle}
+        </div>
+
+        {STEPS.map((step, i) => {
+          const isActive = i === activeIdx;
+          return (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 12,
+                marginBottom: 10,
+              }}
+            >
               <div
                 style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: "50%",
+                  background: isActive ? C.goldDeep : C.goldMid,
+                  boxShadow: isActive
+                    ? "0 0 0 4px rgba(218, 165, 32, 0.25)"
+                    : "none",
+                  transform: isActive ? "scale(1.1)" : "scale(1)",
+                  transition:
+                    "background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease",
                   display: "flex",
-                  alignItems: "flex-start",
-                  gap: 12,
-                  marginBottom: 10,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
                 }}
               >
-                <div
+                <span
                   style={{
-                    width: 30,
-                    height: 30,
-                    borderRadius: "50%",
-                    background: C.goldMid,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: isActive ? C.white : C.goldDeep,
+                    transition: "color 0.35s ease",
                   }}
                 >
-                  <span style={{ fontSize: 13, fontWeight: 700, color: C.goldDeep }}>
-                    {step.num}
-                  </span>
-                </div>
-                <div style={{ paddingTop: 4 }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: "#222" }}>
-                    {step.label}
-                  </div>
-                  {step.sub && (
-                    <div style={{ fontSize: 11, color: C.goldDark, marginTop: 1 }}>
-                      {step.sub}
-                    </div>
-                  )}
-                </div>
+                  {step.num}
+                </span>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              <div style={{ paddingTop: 4 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#222" }}>
+                  {step.label}
+                </div>
+                {step.sub && (
+                  <div style={{ fontSize: 11, color: C.goldDark, marginTop: 1 }}>
+                    {step.sub}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, delay: FOOTER_DELAY, ease: "easeOut" }}
+      <div
         style={{
           padding: "12px 24px 20px",
           borderTop: "0.5px solid #eceae3",
@@ -157,7 +150,7 @@ export default function Flow({ onNext, onBack }) {
         >
           ← Back
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 }
