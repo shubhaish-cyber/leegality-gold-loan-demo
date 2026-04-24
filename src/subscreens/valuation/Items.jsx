@@ -59,7 +59,6 @@ export default function Items({ onNext }) {
   return (
     <QuestionScreen
       title={t.goldValuation}
-      subtitle="Here's each item the agent weighed and tested."
       onNext={handleGenerate}
       nextLabel="Generate & eSign Valuation Certificate"
       banner="customer"
@@ -167,6 +166,68 @@ export default function Items({ onNext }) {
           ))}
         </StaggerContainer>
       </Card>
+
+      <div
+        style={{
+          marginTop: 14,
+          background: "transparent",
+          fontSize: 11,
+          color: C.gray,
+          lineHeight: 1.5,
+        }}
+      >
+        <div
+          style={{
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            fontSize: 10,
+            fontWeight: 700,
+            color: C.goldDark,
+            marginBottom: 8,
+          }}
+        >
+          What happens next
+        </div>
+
+        {[
+          {
+            tag: "eSign 1",
+            body:
+              "Valuator does Aadhaar eSign with GPS location (opens as a pop-up).",
+          },
+          {
+            tag: "eSign 2",
+            body:
+              "Borrower does Virtual Sign with Liveliness + GPS location to prove presence — RBI-compliant. Link sent on WhatsApp.",
+          },
+        ].map((row) => (
+          <div
+            key={row.tag}
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 8,
+              marginBottom: 6,
+            }}
+          >
+            <span
+              style={{
+                flexShrink: 0,
+                background: C.goldLight,
+                color: C.goldDark,
+                fontSize: 10,
+                fontWeight: 700,
+                padding: "2px 6px",
+                borderRadius: 4,
+                marginTop: 1,
+              }}
+            >
+              {row.tag}
+            </span>
+            <span style={{ color: "#555" }}>{row.body}</span>
+          </div>
+        ))}
+      </div>
     </QuestionScreen>
   );
 }
