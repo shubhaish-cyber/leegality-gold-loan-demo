@@ -3,7 +3,7 @@ const or_ = {
   customerBanner: "👤 ଗ୍ରାହକ ବିଭାଗ",
   stepOf: (s, t) => `ଧାପ ${s} / ${t}`,
   chooseLanguage: "ଆପଣଙ୍କ ଭାଷା ବାଛନ୍ତୁ",
-  selectComfort: "ଯେଉଁ ଭାଷାରେ ଆପଣ ସବୁଠୁ ସହଜ ଅନୁଭବ କରନ୍ତି ସେଇଟି ବାଛନ୍ତୁ",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "ଓଡ଼ିଆରେ ଜାରି ରଖନ୍ତୁ →",
   loanApplication: "ସୁନା ଋଣ ଆବେଦନ", customerInfo: "ଗ୍ରାହକ ସୂଚନା",
   fullName: "ପୂରା ନାମ", email: "ଇମେଲ", mobile: "ମୋବାଇଲ ନମ୍ବର",

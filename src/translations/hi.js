@@ -3,7 +3,7 @@ const hi = {
   customerBanner: "👤 ग्राहक अनुभाग",
   stepOf: (s, t) => `चरण ${s} / ${t}`,
   chooseLanguage: "अपनी भाषा चुनें",
-  selectComfort: "वह भाषा चुनें जिसमें आप सहज हों",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "हिंदी में जारी रखें →",
   loanApplication: "स्वर्ण ऋण आवेदन",
   customerInfo: "ग्राहक जानकारी",

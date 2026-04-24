@@ -133,7 +133,7 @@ export default function Flow({ onNext, onBack }) {
         }}
       >
         <GoldBtn onClick={onNext} style={{ fontSize: 15, padding: "14px 20px" }}>
-          Next →
+          Get Started →
         </GoldBtn>
         <button
           onClick={onBack}

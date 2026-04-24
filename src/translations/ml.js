@@ -3,7 +3,7 @@ const ml = {
   customerBanner: "👤 ഉപഭോക്താവ് വിഭാഗം",
   stepOf: (s, t) => `ഘട്ടം ${s} / ${t}`,
   chooseLanguage: "നിങ്ങളുടെ ഭാഷ തിരഞ്ഞെടുക്കുക",
-  selectComfort: "നിങ്ങൾക്ക് ഏറ്റവും സൗകര്യപ്രദമായ ഭാഷ തിരഞ്ഞെടുക്കുക",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "മലയാളത്തിൽ തുടരുക →",
   loanApplication: "സ്വർണ്ണ വായ്പ അപേക്ഷ", customerInfo: "ഉപഭോക്താവിന്റെ വിവരങ്ങൾ",
   fullName: "പൂർണ്ണ നാമം", email: "ഇമെയിൽ", mobile: "മൊബൈൽ നമ്പർ",

@@ -3,7 +3,7 @@ const ta = {
   customerBanner: "👤 வாடிக்கையாளர் பிரிவு",
   stepOf: (s, t) => `படி ${s} / ${t}`,
   chooseLanguage: "உங்கள் மொழியை தேர்வு செய்யுங்கள்",
-  selectComfort: "உங்களுக்கு மிகவும் வசதியான மொழியை தேர்வு செய்யுங்கள்",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "தமிழில் தொடர்க →",
   loanApplication: "தங்க கடன் விண்ணப்பம்", customerInfo: "வாடிக்கையாளர் தகவல்",
   fullName: "முழு பெயர்", email: "மின்னஞ்சல்", mobile: "மொபைல் எண்",

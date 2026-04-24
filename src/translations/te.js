@@ -3,7 +3,7 @@ const te = {
   customerBanner: "👤 కస్టమర్ విభాగం",
   stepOf: (s, t) => `దశ ${s} / ${t}`,
   chooseLanguage: "మీ భాషను ఎంచుకోండి",
-  selectComfort: "మీకు అత్యంత అనుకూలమైన భాషను ఎంచుకోండి",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "తెలుగులో కొనసాగండి →",
   loanApplication: "బంగారు రుణ దరఖాస్తు", customerInfo: "కస్టమర్ సమాచారం",
   fullName: "పూర్తి పేరు", email: "ఈమెయిల్", mobile: "మొబైల్ నంబర్",

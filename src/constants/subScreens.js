@@ -32,7 +32,6 @@ export const PHASE_LABELS = {
 export const SUB_SCREENS = [
   { key: "home-welcome", phase: "home", banner: null, chrome: false },
   { key: "home-flow", phase: "home", banner: null, chrome: false },
-  { key: "home-expect", phase: "home", banner: null, chrome: false },
 
   { key: "language", phase: "language", banner: null, chrome: true },
 

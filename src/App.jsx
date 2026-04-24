@@ -14,7 +14,6 @@ import { useLang } from "./context/LangContext";
 // Sub-screen components
 import HomeWelcome from "./subscreens/home/Welcome";
 import HomeFlow from "./subscreens/home/Flow";
-import HomeExpect from "./subscreens/home/Expect";
 import LanguageSelect from "./subscreens/language/Select";
 import AppGuide from "./subscreens/application/Guide";
 import AppName from "./subscreens/application/Name";
@@ -33,7 +32,6 @@ import SucCelebrate from "./subscreens/success/Celebrate";
 const COMPONENTS = {
   "home-welcome": HomeWelcome,
   "home-flow": HomeFlow,
-  "home-expect": HomeExpect,
   language: LanguageSelect,
   "application-guide": AppGuide,
   "application-name": AppName,

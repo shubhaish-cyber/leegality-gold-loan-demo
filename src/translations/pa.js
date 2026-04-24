@@ -3,7 +3,7 @@ const pa = {
   customerBanner: "👤 ਗਾਹਕ ਸੈਕਸ਼ਨ",
   stepOf: (s, t) => `ਕਦਮ ${s} / ${t}`,
   chooseLanguage: "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
-  selectComfort: "ਉਹ ਭਾਸ਼ਾ ਚੁਣੋ ਜਿਸ ਵਿੱਚ ਤੁਸੀਂ ਸਭ ਤੋਂ ਆਰਾਮਦਾਇਕ ਹੋ",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "ਪੰਜਾਬੀ ਵਿੱਚ ਜਾਰੀ ਰੱਖੋ →",
   loanApplication: "ਸੋਨੇ ਦਾ ਕਰਜ਼ਾ ਅਰਜ਼ੀ", customerInfo: "ਗਾਹਕ ਜਾਣਕਾਰੀ",
   fullName: "ਪੂਰਾ ਨਾਮ", email: "ਈਮੇਲ", mobile: "ਮੋਬਾਈਲ ਨੰਬਰ",

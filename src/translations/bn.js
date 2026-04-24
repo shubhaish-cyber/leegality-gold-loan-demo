@@ -3,7 +3,7 @@ const bn = {
   customerBanner: "👤 গ্রাহক বিভাগ",
   stepOf: (s, t) => `ধাপ ${s} / ${t}`,
   chooseLanguage: "আপনার ভাষা বেছে নিন",
-  selectComfort: "যে ভাষায় আপনি সবচেয়ে স্বাচ্ছন্দ্য বোধ করেন সেটি বেছে নিন",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "বাংলায় চালিয়ে যান →",
   loanApplication: "সোনার ঋণ আবেদন", customerInfo: "গ্রাহকের তথ্য",
   fullName: "পুরো নাম", email: "ইমেইল", mobile: "মোবাইল নম্বর",

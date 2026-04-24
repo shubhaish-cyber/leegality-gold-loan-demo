@@ -3,7 +3,7 @@ const kn = {
   customerBanner: "👤 ಗ್ರಾಹಕ ವಿಭಾಗ",
   stepOf: (s, t) => `ಹಂತ ${s} / ${t}`,
   chooseLanguage: "ನಿಮ್ಮ ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿ",
-  selectComfort: "ನಿಮಗೆ ಅತ್ಯಂತ ಅನುಕೂಲಕರವಾದ ಭಾಷೆ ಆಯ್ಕೆ ಮಾಡಿ",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "ಕನ್ನಡದಲ್ಲಿ ಮುಂದುವರಿಯಿರಿ →",
   loanApplication: "ಚಿನ್ನದ ಸಾಲು ಅರ್ಜಿ", customerInfo: "ಗ್ರಾಹಕ ಮಾಹಿತಿ",
   fullName: "ಪೂರ್ಣ ಹೆಸರು", email: "ಇಮೇಲ್", mobile: "ಮೊಬೈಲ್",

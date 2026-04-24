@@ -12,7 +12,7 @@ const en = {
   homeCta: "Start the demo journey",
   homeFooter: "Powered by Leegality · Data used for demo purposes only",
   chooseLanguage: "Choose Your Language / अपनी भाषा चुनें",
-  selectComfort: "Select the language you're most comfortable with",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: (l) => `Continue in ${l} →`,
   loanApplication: "Loan Application",
   customerInfo: "Customer Information",

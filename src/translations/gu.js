@@ -3,7 +3,7 @@ const gu = {
   customerBanner: "👤 ગ્રાહક વિભાગ",
   stepOf: (s, t) => `પગલું ${s} / ${t}`,
   chooseLanguage: "તમારી ભાષા પસંદ કરો",
-  selectComfort: "જે ભાષામાં તમે સૌથી વધુ આરામ અનુભવો છો તે પસંદ કરો",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "ગુજરાતીમાં ચાલુ રાખો →",
   loanApplication: "સોનાની લોન અરજી", customerInfo: "ગ્રાહકની માહિતી",
   fullName: "પૂરું નામ", email: "ઈમેઇલ", mobile: "મોબાઇલ નંબર",

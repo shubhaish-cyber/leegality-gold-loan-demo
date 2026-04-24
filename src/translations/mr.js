@@ -3,7 +3,7 @@ const mr = {
   customerBanner: "👤 ग्राहक विभाग",
   stepOf: (s, t) => `पायरी ${s} / ${t}`,
   chooseLanguage: "तुमची भाषा निवडा",
-  selectComfort: "तुम्हाला सर्वात सोयीस्कर वाटणारी भाषा निवडा",
+  selectComfort: "Must for RBI-compliance with new KFS and Gold Loan rules",
   continueIn: () => "मराठीत सुरू ठेवा →",
   loanApplication: "सोने कर्ज अर्ज", customerInfo: "ग्राहक माहिती",
   fullName: "पूर्ण नाव", email: "ईमेल", mobile: "मोबाईल नंबर",
