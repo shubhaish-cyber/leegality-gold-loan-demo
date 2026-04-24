@@ -96,19 +96,6 @@ export default function Welcome({ onNext }) {
           Let's walk through it →
         </GoldBtn>
       </FadeInUp>
-
-      <FadeInUp delay={0.5}>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: 18,
-            fontSize: 12,
-            color: C.gray,
-          }}
-        >
-          {t.homeFooter}
-        </div>
-      </FadeInUp>
     </div>
   );
 }
