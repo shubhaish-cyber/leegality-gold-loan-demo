@@ -1,7 +1,5 @@
 import C from "../../constants/colors";
 import GoldBtn from "./GoldBtn";
-import AgentBanner from "./AgentBanner";
-import CustomerBanner from "./CustomerBanner";
 import FadeInUp from "../animations/FadeInUp";
 
 /**
@@ -30,15 +28,11 @@ export default function QuestionScreen({
   onNext,
   nextLabel = "Next →",
   canAdvance = true,
-  banner = null,
   footerNote,
   hero,
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
-      {banner === "agent" && <AgentBanner />}
-      {banner === "customer" && <CustomerBanner />}
-
       {/* Scrollable content region */}
       <div
         style={{
