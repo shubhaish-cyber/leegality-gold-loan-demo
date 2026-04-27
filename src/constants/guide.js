@@ -9,7 +9,7 @@ const GUIDE = {
   application: {
     type: "entry",
     action:
-      "We'll quickly confirm your name, email and mobile number. These will appear on your loan documents.",
+      "Loan application interface, communication, loan kit and eSign interface — all should be in the language selected by the borrower — for RBI compliance.",
   },
   valuation: {
     type: "strip",
