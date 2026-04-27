@@ -4,6 +4,7 @@ import FadeInUp from "../../components/animations/FadeInUp";
 import { useLang } from "../../context/LangContext";
 
 const CONTACT_URL = "https://www.leegality.com/#contact-form";
+const LEARN_MORE_URL = "https://www.leegality.com/use-cases/gold-loans";
 
 export default function Celebrate() {
   const t = useLang();
@@ -69,7 +70,30 @@ export default function Celebrate() {
             cursor: "pointer",
           }}
         >
-          Contact Sales →
+          Book a Leegality demo →
+        </a>
+        <a
+          href={LEARN_MORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "block",
+            width: "100%",
+            boxSizing: "border-box",
+            background: "transparent",
+            color: C.purple,
+            textAlign: "center",
+            border: `1px solid ${C.purple}`,
+            borderRadius: 10,
+            padding: "13px 20px",
+            fontSize: 14,
+            fontWeight: 600,
+            textDecoration: "none",
+            cursor: "pointer",
+            marginTop: 10,
+          }}
+        >
+          Learn more about Leegality for Gold Loans
         </a>
       </FadeInUp>
     </div>
