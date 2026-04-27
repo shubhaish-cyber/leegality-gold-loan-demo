@@ -25,7 +25,7 @@ const GUIDE = {
   agreement: {
     type: "strip",
     action:
-      "One last signature. We'll open your Loan Agreement so you can eSign and complete your gold loan.",
+      "Once KFS is acknowledged, execute fully-stamped Gold loan kit.",
   },
   success: {
     type: "strip",
