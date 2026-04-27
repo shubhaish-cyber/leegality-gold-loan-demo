@@ -20,7 +20,7 @@ const GUIDE = {
   sanction: {
     type: "handoff",
     action:
-      "Please review your Key Fact Statement — the three numbers that matter for your loan — and eSign to confirm you've read the terms.",
+      "Collect borrower acknowledgement on the KFS, once loan terms are finalized.",
   },
   agreement: {
     type: "strip",
