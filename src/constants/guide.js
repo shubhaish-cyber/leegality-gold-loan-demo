@@ -13,8 +13,9 @@ const GUIDE = {
   },
   valuation: {
     type: "strip",
-    action:
-      "Your gold has been weighed and tested. Here's what it's worth — and how much you can borrow against it.",
+    action: "After Application + KYC, customers go for Valuation.",
+    sub:
+      "Here valuator will eSign Valuation Certificate via app and customer via WhatsApp.",
   },
   sanction: {
     type: "handoff",

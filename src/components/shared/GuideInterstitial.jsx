@@ -7,17 +7,20 @@ import FadeInUp from "../animations/FadeInUp";
  * Visual language:
  *   - whole screen flooded gold (no card)
  *   - large bold near-black headline (the `action` copy)
+ *   - optional smaller subtext below
  *   - single purple "Continue" CTA pinned to the bottom
  *
  * Props:
  *   variant     — "entry" | "handoff"
- *   action      — copy string (from src/constants/guide.js)
+ *   action      — bold headline copy
+ *   sub         — optional smaller paragraph rendered under `action`
  *   onNext      — advance handler
  *   nextLabel   — CTA copy (default depends on variant)
  */
 export default function GuideInterstitial({
   variant = "entry",
   action,
+  sub,
   onNext,
   nextLabel,
 }) {
@@ -57,6 +60,22 @@ export default function GuideInterstitial({
           >
             {action}
           </div>
+          {sub && (
+            <div
+              style={{
+                fontSize: 16,
+                fontWeight: 500,
+                color: C.goldDeep,
+                opacity: 0.85,
+                lineHeight: 1.5,
+                textAlign: "center",
+                maxWidth: 380,
+                margin: "16px auto 0",
+              }}
+            >
+              {sub}
+            </div>
+          )}
         </FadeInUp>
       </div>
 
