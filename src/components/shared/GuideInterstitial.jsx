@@ -2,9 +2,12 @@ import C from "../../constants/colors";
 import FadeInUp from "../animations/FadeInUp";
 
 /**
- * Full-screen dark-card interstitial shown BEFORE the content sub-screens of a phase.
- * Replaces the previous modal EntryCard — same visual language, now a first-class
- * sub-screen so it slides in with the rest of the flow.
+ * Full-screen interstitial shown BEFORE the content sub-screens of a phase.
+ *
+ * Visual language:
+ *   - whole screen flooded gold (no card)
+ *   - large bold near-black headline (the `action` copy)
+ *   - single purple "Continue" CTA pinned to the bottom
  *
  * Props:
  *   variant     — "entry" | "handoff"
@@ -25,83 +28,60 @@ export default function GuideInterstitial({
     <div
       style={{
         flex: 1,
-        background: C.grayLight,
+        background: C.goldMid,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "24px 20px",
+        flexDirection: "column",
+        padding: "32px 28px 40px",
       }}
     >
-      <FadeInUp>
-        <div
-          style={{
-            background: C.dark,
-            borderRadius: 20,
-            padding: "32px 28px",
-            maxWidth: 360,
-            width: "100%",
-            textAlign: "center",
-            boxShadow: "0 12px 40px rgba(0,0,0,0.18)",
-          }}
-        >
-          {isHandoff ? (
-            <>
-              <div style={{ fontSize: 48, marginBottom: 12, lineHeight: 1 }}>✍️</div>
-              <div
-                style={{
-                  fontSize: 19,
-                  fontWeight: 700,
-                  color: C.white,
-                  marginBottom: 10,
-                  lineHeight: 1.3,
-                }}
-              >
-                Time to sign your loan documents
-              </div>
-            </>
-          ) : (
-            <div
-              style={{
-                fontSize: 10,
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                color: "#FAC775",
-                marginBottom: 14,
-                textTransform: "uppercase",
-              }}
-            >
-              What's next
-            </div>
-          )}
-
+      {/* Centered headline */}
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <FadeInUp>
           <div
             style={{
-              fontSize: 14,
-              color: isHandoff ? "#D9D9D6" : "#E8E6DF",
-              lineHeight: 1.55,
-              marginBottom: 22,
+              fontSize: 30,
+              fontWeight: 800,
+              color: C.goldDeep,
+              lineHeight: 1.2,
+              textAlign: "center",
+              maxWidth: 380,
+              margin: "0 auto",
             }}
           >
             {action}
           </div>
+        </FadeInUp>
+      </div>
 
-          <button
-            onClick={onNext}
-            style={{
-              width: "100%",
-              background: C.purple,
-              color: C.white,
-              border: "none",
-              borderRadius: 10,
-              padding: "14px 18px",
-              fontSize: 14,
-              fontWeight: 700,
-              cursor: "pointer",
-            }}
-          >
-            {nextLabel || defaultCta}
-          </button>
-        </div>
+      {/* Pinned CTA */}
+      <FadeInUp delay={0.15}>
+        <button
+          onClick={onNext}
+          style={{
+            width: "100%",
+            maxWidth: 380,
+            margin: "0 auto",
+            display: "block",
+            background: C.purple,
+            color: C.white,
+            border: "none",
+            borderRadius: 10,
+            padding: "16px 20px",
+            fontSize: 16,
+            fontWeight: 700,
+            cursor: "pointer",
+            boxShadow: "0 6px 18px rgba(83, 74, 183, 0.28)",
+          }}
+        >
+          {nextLabel || defaultCta}
+        </button>
       </FadeInUp>
     </div>
   );
