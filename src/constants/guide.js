@@ -15,7 +15,7 @@ const GUIDE = {
     type: "strip",
     action: "After Application + KYC, customers go for Valuation.",
     sub:
-      "Here valuator will eSign Valuation Certificate via app and customer via WhatsApp.",
+      "Here valuator will eSign Valuation Certificate and Customer will do a Virtual Sign to prove their presence during Valuation — for RBI compliance.",
   },
   sanction: {
     type: "handoff",
