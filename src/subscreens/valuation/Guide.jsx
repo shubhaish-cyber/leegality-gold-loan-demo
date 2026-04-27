@@ -7,6 +7,7 @@ export default function Guide({ onNext }) {
       variant="entry"
       action={GUIDE.valuation.action}
       sub={GUIDE.valuation.sub}
+      nextLabel="Generate Valuation Certificate"
       onNext={onNext}
     />
   );
